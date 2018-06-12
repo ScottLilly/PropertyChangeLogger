@@ -7,16 +7,15 @@ namespace PropertyChangeLogger
 {
     public abstract class PropertyChangeLoggingClass
     {
-        private SortedList<string, object> _initialPropertyValues { get; set; }
+        private readonly SortedList<string, object> _initialPropertyValues = 
+            new SortedList<string, object>();
 
         protected PropertyChangeLoggingClass()
         {
-            _initialPropertyValues = new SortedList<string, object>();
-
             SetInitialPropertyValues();
         }
 
-        public void SetInitialPropertyValues()
+        protected void SetInitialPropertyValues()
         {
             IEnumerable<PropertyInfo> propertiesToLog = PropertiesToLog;
 
@@ -24,23 +23,17 @@ namespace PropertyChangeLogger
             {
                 if(_initialPropertyValues.ContainsKey(property.Name))
                 {
-                    _initialPropertyValues[property.Name] = GetType().GetProperty(property.Name).GetValue(this, null);
+                    _initialPropertyValues[property.Name] = GetType().GetProperty(property.Name)?.GetValue(this, null);
                 }
                 else
                 {
-                    _initialPropertyValues.Add(property.Name, GetType().GetProperty(property.Name).GetValue(this, null));
+                    _initialPropertyValues.Add(property.Name, GetType().GetProperty(property.Name)?.GetValue(this, null));
                 }
             }
         }
 
         [DoNotLogChangesToThisProperty]
-        public bool HasChangedProperties
-        {
-            get
-            {
-                return (ChangedProperties.Count > 0);
-            }
-        }
+        public bool HasChangedProperties => (ChangedProperties.Count > 0);
 
         [DoNotLogChangesToThisProperty]
         public List<PropertyChange> ChangedProperties

@@ -1,6 +1,4 @@
-﻿using System;
-
-using PropertyChangeLogger;
+﻿using PropertyChangeLogger;
 
 namespace TestPropertyChangeLogger
 {
@@ -11,20 +9,7 @@ namespace TestPropertyChangeLogger
         [DoNotLogChangesToThisProperty]
         public string Suffix { get; set; }
 
-        public string Value
-        {
-            get
-            {
-                if(String.IsNullOrWhiteSpace(Suffix))
-                {
-                    return Prefix;
-                }
-                else
-                {
-                    return string.Format("{0}-{1}", Prefix, Suffix);
-                }
-            }
-        }
+        public string Value => string.IsNullOrWhiteSpace(Suffix) ? Prefix : $"{Prefix}-{Suffix}";
 
         public PostalCode(string prefix, string suffix)
         {

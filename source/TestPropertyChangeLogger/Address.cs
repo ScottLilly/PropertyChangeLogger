@@ -9,10 +9,6 @@ namespace TestPropertyChangeLogger
         public string State { get; set; }
         public PostalCode PostCode { get; set; }
 
-        public Address()
-        {
-        }
-
         public Address(string streetAddress, string city, string state, PostalCode postCode)
         {
             StreetAddress = streetAddress;

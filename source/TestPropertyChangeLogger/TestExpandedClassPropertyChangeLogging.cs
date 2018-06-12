@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestPropertyChangeLogger
 {
@@ -9,10 +8,6 @@ namespace TestPropertyChangeLogger
         private const string CUSTOMER_ORIGINAL_NAME = "CUSTNAME1";
         private const string CUSTOMER_ORIGINAL_PASSWORD = "PASS1";
         private const double CUSTOMER_ORIGINAL_COMPUTED_VALUE = 1.11;
-
-        private const string CUSTOMER_MODIFIED_NAME = "CUSTNAME2";
-        private const string CUSTOMER_MODIFIED_PASSWORD = "PASS2";
-        private const double CUSTOMER_MODIFIED_COMPUTED_VALUE = 2.22;
 
         [TestMethod]
         public void PopulatedConstructor_NoPropertiesChanged()

@@ -2,9 +2,9 @@
 {
     public class PropertyChange
     {
-        public string PropertyName { get; set; }
-        public object OriginalValue { get; set; }
-        public object CurrentValue { get; set; }
+        public string PropertyName { get; }
+        public object OriginalValue { get; }
+        public object CurrentValue { get; }
 
         public PropertyChange(string propertyName, object originalValue, object currentValue)
         {
