@@ -164,3 +164,6 @@ pip-log.txt
 
 # SVN
 *.svn
+
+# Visual Studio cache
+.vs/
